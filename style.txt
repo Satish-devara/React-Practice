@@ -1,0 +1,35 @@
+.clock-container{
+
+  padding:10px 0;
+    backdrop-filter: blur(5px);
+    width: 100vw;
+
+} 
+
+.clock{
+  color:bisque;
+  font-size: 6rem;
+  font-weight: bold;
+  font-family: monospace;
+  text-align: center;
+  text-shadow: 3px 3px 5px hsla(0, 0%, 0%,0.75);
+}
+
+body{
+  background-image: url("https://i.pinimg.com/1200x/e1/87/4e/e1874e65db6e2a76f3e50a47c496a548.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180vh;
+
+}
+
+
+
+
+
