@@ -76,30 +76,32 @@ function App() {
   }
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!newItem) return;
-    const itemToAdd = {
-      id: items.length + 1,
-      checked: false,
-      name: newItem
-    }
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!newItem) return;
 
-    setitems([...items, itemToAdd]);
+  const newItemObj = { checked: false, name: newItem };
 
-    const postOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(itemToAdd)
-    }
+  const postOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newItemObj)
+  };
 
-    const result = await apiRequest(API_URL,postOptions);
-    if(result) setFetchError(result);
+  const result = await apiRequest(API_URL, postOptions);
 
-    setNewItem('');
+  if (result) {
+    setFetchError(result);
+  } else {
+    // Fetch the updated list or append the server-returned item properly
+    const response = await fetch(API_URL);
+    const updatedItems = await response.json();
+    setitems(updatedItems);
   }
+
+  setNewItem('');
+};
+
 
   return (
     <>
